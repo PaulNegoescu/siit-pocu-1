@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titlul meu</title>
+</head>
+
+<body>
+    <header>
+        <h1>Titlu de nivel 1</h1>
+        <h2>Titlu de nivel 2</h2>
+
+        <nav>
+            <ul>
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+                <li><a href="#">Link 5</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <h3>Titlu de nivel 3</h3>
+    <h4>Titlu de nivel 4</h4>
+    <h5>Titlu de nivel 5</h5>
+    <h6>Titlu de nivel 6</h6>
+
+    <main>
+        <section>
+            <h2>Titlul &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sectiunii</h2>
+        </section>
+
+        <article>
+            <h2>Titlul articolului</h2>
+            Continut de sine statator
+            <footer>
+                Copyright &copy; &gt; &lt; scoalainformala &amp; 2021.
+            </footer>
+        </article>
+
+        <aside>
+            <h2>Titlul sidebar</h2>
+            Aditional information
+        </aside>
+
+        <div>
+            Block generic <span>Inline generic</span>.
+        </div>
+    </main>
+
+    <p>
+        Lorem <strong>ipsum dolor sit</strong> amet <em>consectetur adipisicing</em> elit. Molestias cumque nobis
+        molestiae eaque libero minus.
+        Consectetur <a href="contact.html">eaque omnis earum dolore</a> voluptatum dignissimos, ad error ipsa expedita
+        fuga, delectus, numquam
+        eius.
+    </p>
+
+    <p>
+        <a href="https://google.com" target="_blank">Absolut</a>
+    </p>
+    <p>
+        <a href="contact.html">
+            <img src="https://timesofindia.indiatimes.com/photo/67586673.cms" alt="A cute cat" width="400">
+        </a>
+    </p>
+    <p>
+        <a href="child/child.html">Relativ nested</a>
+    </p>
+    <p>
+        <a href="mailto:paul.negoescu@scoalainformala.ro?subject=test&cc=cineva@scoalainformala.ro">Mailto link</a>
+    </p>
+    <p>
+        <a href="tel:0740111111">Tel link</a>
+    </p>
+
+    <ol type="i">
+        <li>Elementul numarul 1</li>
+        <li>Elementul numarul 2</li>
+        <li>Elementul numarul 3</li>
+        <li>
+            Si aici un submeniu:
+            <ul>
+                <li>Sublista 1</li>
+                <li>Sublista 2</li>
+                <li><a href="https://scoalainformala.ro">Sublista 3</a></li>
+            </ul>
+        </li>
+        <li>Elementul numarul 5</li>
+    </ol>
+
+    <dl>
+        <dt>Firefox</dt>
+        <dd>Browser web</dd>
+        <dd>Red Panda</dd>
+    </dl>
+
+    <table border="1" cellpadding="3" cellspacing="3">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col" colspan="2">Cap de tabel 2</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" rowspan="2">Prima celula</th>
+                <td>A doua celula</td>
+                <td>A treia celula</td>
+            </tr>
+            <tr>
+                <td>5<sub>2</sub></td>
+                <td>A 6-a celula</td>
+            </tr>
+        </tbody>
+    </table>assdadasdasdasd
+
+    <!-- sadsadasdasc -->
+
+    <form action="child/child.html" method="GET">
+        <fieldset>
+            <legend>Titlul sectiunii din formular</legend>
+            <p>
+                <label for="fName">First Name</label>
+                <input name="fName" id="fName" placeholder="Write your first name" type="text"
+                    value="valoare implicita">
+            </p>
+            <p>
+                <label for="email">Email</label>
+                <input name="email" id="email" type="email">
+            </p>
+        </fieldset>
+        <p>
+            <label for="pwd">Password</label>
+            <input name="password" id="pwd" placeholder="Password" type="password">
+        </p>
+        <p>
+            <label for="message">Message</label>
+            <textarea name="message" id="message" placeholder="Message" cols="30" rows="10">Valoare implicita</textarea>
+        </p>
+        <p>
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+                <optgroup label="Oldschool">
+                    <option value="m">Male</option>
+                    <option value="f" selected>Female</option>
+                </optgroup>
+
+                <option value="o">Other</option>
+            </select>
+        </p>
+        <p>
+            <label>
+                <input type="radio" value="m" name="genderradio">
+                Male
+            </label>
+            <label>
+                <input type="radio" value="f" name="genderradio" checked>
+                Female
+            </label>
+            <label>
+                <input type="radio" value="o" name="genderradio">
+                Other
+            </label>
+        </p>
+        <p>
+            What colors do you like?
+            <label><input value="b" name="color" type="checkbox">Blue</label>
+            <label><input value="r" name="color" type="checkbox" checked>Red</label>
+            <label><input value="g" name="color" type="checkbox">Green</label>
+        </p>
+        <p>
+            <input type="submit" value="Trimite">
+            <button type="submit">Trimite Formular</button>
+            <button type="reset">Reseteaza formular</button>
+            <button type="button">Nu face nimic</button>
+        </p>
+
+    </form>
+
+
+    <iframe src="https://scoalainformala.ro" name="testframe" frameborder="1">
+        Text in cazul in care iframe-ul nu functioneaza.
+    </iframe>
+    <a href="contact.html" target="testframe">Deschide contact in iframe</a>
+
+</body>
+
+</html>

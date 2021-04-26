@@ -1,0 +1,116 @@
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+header {
+  background-color: greenyellow;
+}
+
+header::after {
+  display: table;
+  clear: both;
+  content: '';
+}
+
+.main-menu,
+.main-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.main-menu ul {
+  padding-left: 10px;
+}
+
+.main-menu a {
+  color: #333;
+  text-decoration: none;
+}
+
+.main-menu a:hover {
+  text-decoration: underline;
+}
+
+.main-menu > li {
+  float: left;
+  border-left: 2px solid #333;
+}
+
+.main-menu > :first-child {
+  border: none;
+}
+
+p::first-letter {
+  font-size: 2em;
+}
+
+p::first-line {
+  color: red;
+}
+
+::selection {
+  background-color: #bada55;
+  color: #c00;
+}
+
+a[href^='http']::before {
+  content: '';
+  background-image: url(https://cdn3.iconfinder.com/data/icons/iconano-web-stuff/512/109-External-512.png);
+  background-size: contain;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+ul.main-menu li {
+  background: green;
+}
+
+body li.special {
+  background: #c00;
+}
+
+.special.highlight {
+  background: blue;
+}
+
+.invisible {
+  display: none !important;
+}
+
+/* .main-menu > li ~ li {
+  border-left: 2px solid #333;
+} */
+
+/* h2 ~ p {
+  color: red;
+} */
+
+/* 
+    -------Selectorii-------
+    *  - 0
+    Element, ::pseudo-element  - 1
+    .class, :pseudo-class, [attribute]  - 10
+    #id  - 100
+
+    inline style | #id | .class | elem
+    0              1        0     0
+
+    [attr] - prezent pe element
+    [attr=val] - coincide cu valoare exacta
+    [attr^=val] - val start
+    [attr$=val] - val end
+    [attr~=val] - valoarea contine intr-o lista separata de spatii "val" <span attr="ggg val ttt"
+    [attr*=val] - valoarea contine undeva "val"
+*/
+
+/* 
+    -------Combinatorii-------
+    SPATIU - Descendenti
+    > - Copii
+    , - Grupreaza selectori
+    + - Frate adiciacent precendent / Immediately adjacent sibling
+    ~ - Frate precedent / Generic preceding sibling
+*/

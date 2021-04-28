@@ -21,6 +21,16 @@ header::after {
 
 .main-menu ul {
   padding-left: 10px;
+  position: absolute;
+  display: none;
+}
+
+.main-menu li:hover ul {
+  display: block;
+}
+
+ul.main-menu ul > li {
+  background: yellow;
 }
 
 .main-menu a {
@@ -33,6 +43,7 @@ header::after {
 }
 
 .main-menu > li {
+  position: relative;
   float: left;
   border-left: 2px solid #333;
 }

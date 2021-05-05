@@ -1,0 +1,88 @@
+header {
+  background-color: red;
+}
+
+footer {
+  background-color: blue;
+}
+
+section:first-of-type {
+  background-color: yellow;
+}
+
+section:nth-of-type(2) {
+  background-color: green;
+}
+
+section:last-of-type {
+  background-color: purple;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/*
+    Flex
+*/
+
+/* 
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  flex: 100px 0 1;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+}
+
+section {
+  flex: 200px 0 2;
+}
+
+section:nth-child(2) {
+  flex-grow: 1;
+  flex-shrink: 1;
+} */
+
+/*
+    Grid
+*/
+
+body {
+  display: grid;
+  /* grid-template-columns: minmax(auto, 200px) minmax(33%, 1fr) minmax(auto, 200px); */
+  /* grid-template-columns: repeat(3, 1fr); */
+  grid-template-areas:
+    'header header header'
+    'left   center right'
+    'footer footer footer';
+
+  grid-template-rows: 100px 1fr 100px;
+}
+
+header,
+footer {
+  grid-column: span 3;
+}
+
+/* header {
+  grid-area: header;
+}
+
+footer {
+  grid-area: right;
+}
+
+section:nth-of-type(3) {
+  grid-area: left;
+} */

@@ -88,90 +88,252 @@ function pluck(arr, key) {
 console.log('Pluck: ', pluck(demoArr, 'color')); // => ['red', 'green', 'turqoize' .......];
 
 /*
-2. Sa se implementeze o functie care returneaza ariile tuturor elementelor din array-ul de mai sus, aria e inaltime * latime.
+2. Sa se implementeze o functie care returneaza ariile tuturor 
+elementelor din array-ul de mai sus, aria e inaltime * latime.
 */
+
+function myMap(func) {
+  const newArr = [];
+
+  for (let i = 0; i < this.length; i++) {
+    newArr.push(func(this[i], i, this));
+  }
+
+  return newArr;
+}
+
+Array.prototype.myMap = myMap;
+
+function calculateArea(arr) {
+  //   const area = [];
+  //   for (const obj of arr) {
+  //     area.push(obj['height'] * obj['width']);
+  //   }
+  //   return area;
+
+  //   return arr.map((obj) => obj.height * obj.width);
+  return arr.myMap(function (obj) {
+    return obj.height * obj.width;
+  });
+}
+
 console.log('Calclulate area:', calculateArea(demoArr));
 
-function calculateArea(arr) {}
-
 /*
-3. Sa se scrie o functie care returneaza un subset din array-ul de mai sus unde elementele au aria mai mica sau egala cu 100
+3. Sa se scrie o functie care returneaza un subset din array-ul de 
+mai sus unde elementele au aria mai mica sau egala cu 100
 */
-function filterArr(arr) {}
+function myFilter(arr, func) {
+  const subset = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const condition = func(arr[i], i, arr);
+    if (condition) {
+      subset.push(arr[i]);
+    }
+  }
+
+  return subset;
+}
+
+function filterArr(arr) {
+  //   const subset = [];
+
+  //   for (const obj of arr) {
+  //     if (obj.height * obj.width <= 100) {
+  //       subset.push(obj);
+  //     }
+  //   }
+  //   return subset;
+
+  //   return arr.filter((obj) => obj.height * obj.width <= 100);
+  return myFilter(arr, (obj) => obj.height * obj.width <= 100);
+}
 
 console.log('Filter: ', filterArr(demoArr));
 
 /*
-4. Sa se implementeze o functie numita reject, care primeste un array si o functie iterator. Functia iterator primeste cate un element din array ca si parametru si trebuie sa returneze true sau false. Daca returneaza true, elementul in cauza nu va fi inclus de functia parinte in array-ul rezultat. Daca returneaza false va fi inclus.
+4. Sa se implementeze o functie numita reject, care primeste un array 
+si o functie iterator.
+ Functia iterator primeste cate un element din 
+array ca si parametru si trebuie sa returneze true sau false.
+ Daca returneaza true, elementul in cauza nu va fi inclus de functia 
+ parinte in array-ul rezultat. Daca returneaza false va fi inclus.
 */
-console.log(reject(demoArr, iterator)); // sa returneze un array de obiecte cu height < 10
 
-function iterator(aria) {}
+function iterator(obj) {
+  return obj.width >= 10;
+}
 
-function reject(arr, cb) {}
-console.log('Reject', reject(calculateArea(demoArr), iterator));
+function reject(arr, cb) {
+  //   const newArr = [];
+  //   for (const obj of arr) {
+  //     if (!cb(obj)) {
+  //       newArr.push(obj);
+  //     }
+  //   }
+  //   return newArr;
 
+  return arr.filter((obj) => !cb(obj));
+}
+
+console.log('Reject', reject(demoArr, iterator)); // sa returneze un array de obiecte cu height < 10
 /*
-5. Sa se scrie o functie care returneaza elementul cu culoarea crimson
+5. Sa se scrie o functie care returneaza elementul cu culoarea 
+crimson
 */
+
+function findColor(arr, color) {
+  //   for (const obj of arr) {
+  //     if (obj.color === color) {
+  //       return obj;
+  //     }
+  //   }
+  return arr.find((obj) => obj.color === color);
+}
+
 console.log('Find Color: ', findColor(demoArr, 'red'));
-
-function findColor(arr, color) {}
 /*
-6. Sa se scrie o functie care returneaza true daca toate elementele din array au aria >= 10, false altfel.
+6. Sa se scrie o functie care returneaza true daca toate elementele din 
+array au aria >= 10, false altfel.
 */
-console.log('Areas are Bigger: ', areasAreBigger(demoArr, 5));
 
-function areasAreBigger(arr, area) {}
+function myEvery(arr, cb) {
+  for (let i = 0; i < arr.length; i++) {
+    const condition = cb(arr[i], i, arr);
+    if (!condition) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function areasAreBigger(arr, area) {
+  //   for (const obj of arr) {
+  //     if (!(obj.width * obj.height >= area)) {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  //   return arr.every((obj) => obj.width * obj.height >= area);
+  return myEvery(arr, (obj) => obj.width * obj.height >= area);
+}
+
+console.log('Areas are Bigger: ', areasAreBigger(demoArr, 7));
 
 /*
-7. Sa se scrie o functie care returneaza true daca cel putin unul din elementele array-ului are culoarea 'green';
+7. Sa se scrie o functie care returneaza true daca cel putin unul din
+ elementele array-ului are culoarea 'green';
 */
 console.log('At Least One: ', atLeastOneIsOfColor(demoArr, 'green'));
 
-function atLeastOneIsOfColor(arr, color) {}
+function atLeastOneIsOfColor(arr, color) {
+  //   for (const obj of arr) {
+  //     if (obj.color === color) {
+  //       return true;
+  //     }
+  //   }
+  //   return false;
+
+  return arr.some((obj) => obj.color === color);
+}
 
 /*
-8. Sa se scrie o functie care returneaza distanta totala (suma distantelor elementelor)
+8. Sa se scrie o functie care returneaza distanta totala 
+(suma distantelor elementelor)
 */
 console.log('Sum of distances: ', sumOfDistances(demoArr));
 
-function sumOfDistances(arr) {}
+function sumOfDistances(arr) {
+  //   let suma = 0;
+  //   for (let i = 0; i < arr.length; i++) {
+  //     const obj = arr[i];
+  //     suma += obj.distance;
+  //   }
+  //   return suma;
+
+  return arr.reduce((sum, obj) => sum + obj.distance, 0);
+}
 
 /*
-9. Sa se scrie o functie care returneaza un obiect in care se numara de cate ori apare fiecare culoare in parte in array-ul de obiecte. {red: 2, blue: 1, etc...}
+9. Sa se scrie o functie care returneaza un obiect in care se numara 
+de cate ori apare fiecare culoare in parte in array-ul de obiecte. 
+{red: 2, blue: 1, etc...}
 */
 console.log('Number of colors: ', noColors(demoArr));
 
-function noColors(arr) {}
+function noColors(arr) {
+  const newArr = {};
+  for (let i = 0; i < arr.length; i++) {
+    if (newArr[arr[i].color]) {
+      newArr[arr[i].color] += 1;
+    } else {
+      newArr[arr[i].color] = 1;
+    }
+  }
+  return newArr;
 
+  //   return arr.reduce(function (countObj, obj) {
+  //     if (countObj[obj.color]) {
+  //       countObj[obj.color] += 1;
+  //     } else {
+  //       countObj[obj.color] = 1;
+  //     }
+
+  //     return countObj;
+  //   }, {});
+}
 /*
-10. Sa se scrie o functie care returneaza un array cu toate elementele care au o culoare unica. Oricare element dupa primul care are o culoare care s-ar repeta nu este inclus in array.
+10. Sa se scrie o functie care returneaza un array cu toate elementele 
+care au o culoare unica. Oricare element dupa primul care are o 
+culoare care s-ar repeta nu este inclus in array.
 */
 console.log('Unique Colors: ', uniqueColors(demoArr));
 
-function uniqueColors(arr) {}
+function uniqueColors(arr) {
+  const newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    // if (!newArr.some((obj) => obj.color === arr[i].color)) {
+    if (newArr.every((obj) => obj.color !== arr[i].color)) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+  //   return arr.reduce((newArr, obj) => {
+  //     if (newArr.every((newObj) => newObj.color !== obj.color)) {
+  //       newArr.push(obj);
+  //     }
 
-/*
-[
-  {id: 1, color: 'red', height: 15, width: 20, distance: 10},
-  {id: 2, color: 'green', height: 5, width: 30, distance: 15},
-  {id: 3, color: 'turqoize', height: 7, width: 9, distance: 8},
-  {id: 4, color: 'blue', height: 2, width: 3, distance: 3},
-  {id: 6, color: 'crimson', height: 7, width: 8, distance: 16},
-]
-*/
+  //     return newArr;
+  //   }, []);
+}
 
 /*
 11. Sa se inverseze doua variabile.
 */
-let a = 5,
-  b = 8;
+let a = 5;
+let b = 8;
 
-console.log('A:', a, 'B:', b);
+// let aux = a;
+// a = b;
+// b = aux;
+
+//array destructuring
+const [c, d] = demoArr;
+
+[a, b] = [b, a];
+
+//object destructuring
+const { height, width } = demoArr[0];
+
+const [{ distance }, { color }] = demoArr;
+
+console.log({ a, b, c, d, height, width, distance, color });
 
 /*
-12. Folosind array-ul de mai jos, vreau sa se obtina o variabila care contine un array de obiecte strcturat astfel:
+12. Folosind array-ul de mai jos, vreau sa se obtina o variabila 
+care contine un array de obiecte strcturat astfel:
 [
   {subject: 'Chemistry', time: '9AM', teacher: 'Mr. Darnick'},
   ...

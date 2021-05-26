@@ -1,0 +1,8 @@
+.completed {
+    text-decoration: line-through;
+}
+
+[data-todos] {
+    display: flex;
+    flex-direction: column;
+}

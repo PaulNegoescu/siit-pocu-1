@@ -56,11 +56,18 @@ function handleDataFromServer(todos) {
     for(const todo of todos) {
         const newTodo = document.createElement('label');
         const check = document.createElement('input');
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.innerText = 'Delete';
+        deleteBtn.dataset.delete = todo.id;
+
         check.type = 'checkbox';
         check.checked = todo.completed;
+        check.dataset.todoId = todo.id;
         
         newTodo.innerText = todo.title;
         newTodo.prepend(check);
+        newTodo.appendChild(deleteBtn);
 
         todo.completed && newTodo.classList.add('completed');
 
@@ -70,8 +77,68 @@ function handleDataFromServer(todos) {
     container.appendChild(fragment);
 
     // Event Delegation
-    container.addEventListener('change', (e) => e.target.parentNode.classList.toggle('completed'))
+    container.addEventListener('change', updateStatus);
+    container.addEventListener('click',  (e) => {
+        console.log(e.target.dataset.delete);
+        e.preventDefault();
+        if(e.target.dataset.delete !== undefined){
+            deleteTodo(e); 
+        }
+    });
 }
+
+function updateStatus(e) {
+    e.target.parentNode.classList.toggle('completed');
+
+    fetch(`http://jsonplaceholder.typicode.com/todos/${e.target.dataset.todoId}`, {
+        method: 'PATCH', 
+        headers: { 'content-type': 'application/json'},
+        body: JSON.stringify({completed: e.target.checked })
+    });
+}
+
+const addTodo = document.querySelector('[data-newtodo]');
+const addTodoBtn = document.querySelector('.submit-btn');
+addTodo.addEventListener('change', (e) => e.stopPropagation());
+addTodoBtn.addEventListener('click', (event) => {
+   
+    event.preventDefault();
+    addNewTodo(addTodo);
+});
+
+
+
+async function addNewTodo(addTodo) {
+    const todoValue=addTodo.value;
+    const newTodo = {userId: 1, title:todoValue, completed:false};
+
+    try {
+        const data = await fetch('http://jsonplaceholder.typicode.com/todos/', {
+            method: 'POST',
+            headers: {'content-type':'application/json'},
+            body: JSON.stringify(newTodo)
+        }).then(treatResponse);
+    } catch(err) {
+        console.error(err)
+    }
+    console.log(data);
+}
+
+async function deleteTodo(e){
+    const res = await fetch(`http://jsonplaceholder.typicode.com/todos/${e.target.dataset.delete}`, {
+        method: 'DELETE'
+    });
+
+    if(res.ok) {
+        const renderedTodo = e.target.parentNode;
+        renderedTodo.remove();
+    }
+}
+
+
+
+
+ 
 
 
 
